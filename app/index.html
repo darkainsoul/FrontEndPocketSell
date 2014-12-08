@@ -1,0 +1,46 @@
+<!doctype html>
+<html lang="en" ng-app="myApp">
+<head>
+  <meta charset="utf-8">
+  <title>My AngularJS App</title>
+  <link rel="stylesheet" href="css/app.css"/>
+</head>
+<body ng-controller="MenuPocketSell as menuLeft">
+
+<div class="container-fluid">
+      
+      <div class="row row-offcanvas row-offcanvas-left">
+        
+         <div class="col-sm-3 col-md-2 sidebar-offcanvas" id="sidebar" role="navigation">
+              <img src="img/PocketSellAvatar.jpg"/>
+            <ul class="nav nav-sidebar">
+              <li ng-repeat="ligas in menuLeft.menu | orderBy: -OrderNumber " ng-show="ligas.Active" ng-class="{ active:menuLeft.isSelected({{ligas.OrderNumber}}) }"> 
+                <a ng-click="menuLeft.selectTab({{ligas.OrderNumber}})" href="#/{{ligas.url}}">{{ligas.Name}}</a>
+              </li>
+            </ul>          
+        </div><!--/span-->
+        
+        <div class="col-sm-9 col-md-10 main">     
+          <div class="row placeholders">
+            <div ng-view></div>    
+          </div>
+      </div><!--/row-->
+  </div>
+</div><!--/.container-->    
+
+  <script src="//ajax.googleapis.com/ajax/libs/angularjs/1.2.27/angular.min.js"></script>
+  <script src="lib/angular/angular-route.js"></script>
+  <script src="js/app.js"></script>
+  <script src="js/services.js"></script>
+  <script src="js/controllers.js"></script>
+  <script src="js/filters.js"></script>
+  <script src="js/directives.js"></script>
+
+  <link href="css/bootstrap.min.css" rel="stylesheet">
+  <!--[if lt IE 9]>
+    <script src="//html5shim.googlecode.com/svn/trunk/html5.js"></script>
+  <![endif]-->
+  <link href="css/styles.css" rel="stylesheet">
+
+</body>
+</html>
